@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GPS do Motoca | Plano de Negócios</title>
+    <title>GPS do Motoca | Jornada Interativa</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary-color: #ffcc00; /* Amarelo Motoca */
-            --secondary-color: #1a1a1a; /* Preto Carbono */
-            --accent-color: #ff4444; /* Vermelho Alerta */
+            --primary-color: #ffcc00;
             --bg-dark: #0f0f0f;
+            --card-bg: #1a1a1a;
             --text-light: #f8f9fa;
         }
 
@@ -21,253 +20,241 @@
             font-family: 'Poppins', sans-serif;
             background-color: var(--bg-dark);
             color: var(--text-light);
-            overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
-        /* Hero Section Estilo Logdev */
-        .hero {
-            padding: 100px 0 60px;
-            background: radial-gradient(circle at top right, #333, #0f0f0f);
+        .header-premium {
+            padding: 80px 0;
+            background: linear-gradient(180deg, #1a1a1a 0%, #0f0f0f 100%);
             border-bottom: 2px solid var(--primary-color);
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: var(--primary-color);
-            text-transform: uppercase;
-            letter-spacing: -1px;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        /* Cards Estilizados */
-        .custom-card {
-            background: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 20px;
-            padding: 30px;
-            height: 100%;
-            transition: all 0.3s ease;
-        }
-
-        .custom-card:hover {
-            border-color: var(--primary-color);
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(255, 204, 0, 0.1);
-        }
-
-        .card-icon {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-
         .section-title {
+            font-weight: 800;
             color: var(--primary-color);
             text-transform: uppercase;
-            font-weight: 800;
-            margin-bottom: 40px;
             text-align: center;
+            margin-bottom: 50px;
         }
 
-        /* Tabela de Preços Premium */
-        .pricing-card {
-            background: linear-gradient(180deg, #222 0%, #111 100%);
-            border: 2px solid #333;
-            padding: 40px;
-            border-radius: 30px;
-            text-align: center;
+        /* Menu de Etapas Lateral/Scroll */
+        .nav-pills .nav-link {
+            color: var(--text-light);
+            background: var(--card-bg);
+            margin-bottom: 10px;
+            border: 1px solid #333;
+            text-align: left;
+            padding: 15px 20px;
+            border-radius: 12px;
+            transition: 0.3s;
         }
 
-        .pricing-card.popular {
+        .nav-pills .nav-link.active {
+            background-color: var(--primary-color) !important;
+            color: #000 !important;
+            font-weight: 700;
             border-color: var(--primary-color);
             transform: scale(1.05);
         }
 
-        .price {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--primary-color);
+        .nav-pills .nav-link:hover:not(.active) {
+            border-color: var(--primary-color);
         }
 
-        /* Pitch Section */
-        .pitch-container {
-            background-color: var(--primary-color);
-            color: #000;
-            padding: 50px;
-            border-radius: 30px;
-            margin-top: 50px;
+        /* Conteúdo das Etapas */
+        .tab-content {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #333;
+            min-height: 500px;
         }
 
-        /* Badge Estilo Logdev */
-        .badge-custom {
-            background-color: var(--primary-color);
+        .etapa-badge {
+            background: var(--primary-color);
             color: #000;
-            padding: 8px 20px;
+            padding: 5px 15px;
             border-radius: 50px;
-            font-weight: bold;
-            text-transform: uppercase;
+            font-weight: 800;
             font-size: 0.8rem;
+            margin-bottom: 15px;
+            display: inline-block;
         }
 
-        /* Footer */
+        .highlight-box {
+            background: #252525;
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 4px solid var(--primary-color);
+            margin-top: 20px;
+        }
+
+        /* Preços */
+        .price-tag {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
         footer {
-            padding: 50px 0;
-            border-top: 1px solid #333;
+            padding: 40px 0;
             text-align: center;
-            opacity: 0.6;
+            opacity: 0.5;
+            font-size: 0.9rem;
         }
 
-        /* Mobile Adjustments */
+        /* Estilo Mobile */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .pricing-card.popular { transform: none; }
+            .nav-pills {
+                flex-direction: row !important;
+                overflow-x: auto;
+                white-space: nowrap;
+                display: flex;
+                margin-bottom: 20px;
+            }
+            .nav-pills .nav-link {
+                margin-right: 10px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <section class="hero text-center">
+    <header class="header-premium text-center">
         <div class="container">
-            <span class="badge-custom mb-3">Guarulhos - Marco Zero</span>
-            <h1>GPS do Motoca 🛵</h1>
-            <p class="mt-3">Transformando o tempo ocioso em faturamento real. O sistema de inteligência coletiva que devolve o poder para quem está no trecho.</p>
-            <div class="mt-4">
-                <a href="#pitch" class="btn btn-warning btn-lg fw-bold px-5 py-3 rounded-pill">VER ESTRATÉGIA</a>
-            </div>
+            <h1 class="display-4 fw-800">GPS DO MOTOCA <span style="color:var(--primary-color)">PRO</span></h1>
+            <p class="lead">Navegue pelas 10 etapas da construção do negócio em Guarulhos</p>
         </div>
-    </section>
+    </header>
 
-    <section class="py-5">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-md-6">
-                    <div class="custom-card">
-                        <i class="fa-solid fa-file-lines card-icon"></i>
-                        <h3>A) Resumo Executivo</h3>
-                        <p>O GPS do Motoca foca exclusivamente na produtividade do entregador. Unimos faturamento com uma rede de descontos local, transformando o "tempo morto" em economia e lucro.</p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="custom-card">
-                        <i class="fa-solid fa-user-group card-icon"></i>
-                        <h3>C) Persona: Jorge</h3>
-                        <p><strong>Dilema:</strong> Motoboy de Guarulhos cansado de "rodar no escuro".<br>
-                        <strong>JTBD:</strong> "Preciso saber onde está tocando pedido agora para não gastar gasolina à toa."</p>
-                    </div>
+    <main class="container my-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <button class="nav-link active" id="tab0" data-bs-toggle="pill" data-bs-target="#content0" type="button">0. Contexto e Metas 🏁</button>
+                    <button class="nav-link" id="tab1" data-bs-toggle="pill" data-bs-target="#content1" type="button">1. Ideia e Público 💡</button>
+                    <button class="nav-link" id="tab2" data-bs-toggle="pill" data-bs-target="#content2" type="button">2. Mercado e Rivais 🗺️</button>
+                    <button class="nav-link" id="tab3" data-bs-toggle="pill" data-bs-target="#content3" type="button">3. Proposta de Valor 💎</button>
+                    <button class="nav-link" id="tab4" data-bs-toggle="pill" data-bs-target="#content4" type="button">4. Produto/MVP 📱</button>
+                    <button class="nav-link" id="tab5" data-bs-toggle="pill" data-bs-target="#content5" type="button">5. Precificação 💰</button>
+                    <button class="nav-link" id="tab6" data-bs-toggle="pill" data-bs-target="#content6" type="button">6. Go-To-Market 🚀</button>
+                    <button class="nav-link" id="tab7" data-bs-toggle="pill" data-bs-target="#content7" type="button">7. Operação 🛠️</button>
+                    <button class="nav-link" id="tab8" data-bs-toggle="pill" data-bs-target="#content8" type="button">8. Finanças 📈</button>
+                    <button class="nav-link" id="tab9" data-bs-toggle="pill" data-bs-target="#content9" type="button">9. Plano 30/60/90 🗓️</button>
+                    <button class="nav-link" id="tab10" data-bs-toggle="pill" data-bs-target="#content10" type="button">10. Pitch Final 🎤</button>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <section class="py-5 bg-black">
-        <div class="container text-center">
-            <h2 class="section-title">Engrenagens do Negócio</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="custom-card">
-                        <i class="fa-solid fa-map-location-dot card-icon"></i>
-                        <h4>MVP & Produto</h4>
-                        <p class="small">Mapa de calor em tempo real (20 min), reporte rápido e cadastro via CPF para segurança total da comunidade.</p>
+            <div class="col-md-8">
+                <div class="tab-content shadow-lg" id="v-pills-tabContent">
+                    
+                    <div class="tab-pane fade show active" id="content0">
+                        <span class="etapa-badge">ETAPA 0</span>
+                        <h2>Contexto e Metas</h2>
+                        <p>O foco é dominar o setor de logística colaborativa em Guarulhos-SP.</p>
+                        <div class="highlight-box">
+                            <strong>Meta 90 dias:</strong> Bater 500 usuários pagantes e validar o modelo de troca de informações por descontos.
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="custom-card">
-                        <i class="fa-solid fa-bolt card-icon"></i>
-                        <h4>Go-To-Market</h4>
-                        <p class="small">Abordagem física nos Shoppings Maia/Internacional. Marketing de guerrilha com distribuição de brindes úteis.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="custom-card">
-                        <i class="fa-solid fa-handshake card-icon"></i>
-                        <h4>Parcerias B2B</h4>
-                        <p class="small">Pins patrocinados (Oficina/Posto) de R$ 50 a R$ 100/mês. Fidelização real de quem faz a economia girar.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section class="py-5">
-        <div class="container">
-            <h2 class="section-title">I) Planos de Assinatura</h2>
-            <div class="row g-4 justify-content-center">
-                <div class="col-md-3">
-                    <div class="pricing-card">
-                        <h5>Semanal</h5>
-                        <div class="price">R$ 4,90</div>
-                        <p class="small text-muted">Ideal para o fluxo semanal</p>
+                    <div class="tab-pane fade" id="content1">
+                        <span class="etapa-badge">ETAPA 1</span>
+                        <h2>Ideia, Problema e Público</h2>
+                        <p><strong>Público:</strong> Entregadores Full-time (12h/dia).</p>
+                        <p><strong>Problema:</strong> Ociosidade e o "rodar no escuro" gastando gasolina sem necessidade.</p>
+                        <p><strong>JTBD:</strong> O trabalho é encontrar demanda real onde o algoritmo do app de entrega é opaco.</p>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="pricing-card popular">
-                        <span class="badge bg-warning text-dark mb-2">MAIS VENDIDO</span>
-                        <h5>Mensal</h5>
-                        <div class="price">R$ 14,90</div>
-                        <p class="small">Menos que uma entrega!</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="pricing-card">
-                        <h5>Quinzenal</h5>
-                        <div class="price">R$ 10,90</div>
-                        <p class="small text-muted">Equilíbrio perfeito</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section id="pitch" class="py-5">
-        <div class="container">
-            <div class="pitch-container shadow-lg">
-                <div class="row align-items-center">
-                    <div class="col-md-2 text-center">
-                        <i class="fa-solid fa-bullhorn" style="font-size: 4rem;"></i>
+                    <div class="tab-pane fade" id="content2">
+                        <span class="etapa-badge">ETAPA 2</span>
+                        <h2>Pesquisa e Concorrência</h2>
+                        <p>O vilão não é o iFood, é a <strong>intuição falha</strong> do entregador. Nosso diferencial contra o Waze é a hiper-especialização em duas rodas e suporte de parcerias locais.</p>
                     </div>
-                    <div class="col-md-10">
-                        <h2 class="fw-800">N) O PITCH DE 2 MINUTOS</h2>
-                        <p class="fs-4 italic">"Você já sentiu que o iFood te esqueceu na calçada? Enquanto você espera 1h, a gasolina e o tempo vão embora. O GPS do Motoca é a união da categoria: a gente mostra onde o pedido tá saindo, onde tem blitz e onde a marmita é barata. Custa menos que um café por semana e se paga na primeira entrega que você não perderia. Sou entregador, conheço o trecho e vim pra mudar o jogo em Guarulhos. Vamos rodar juntos?"</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section class="py-5 bg-black">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h4 class="text-warning mb-4">M) Plano 30/60/90 Dias</h4>
-                    <ul class="list-unstyled">
-                        <li class="mb-3"><i class="fa-solid fa-check text-warning me-2"></i> <strong>30:</strong> Fechar 5 parceiros e lançar Beta.</li>
-                        <li class="mb-3"><i class="fa-solid fa-check text-warning me-2"></i> <strong>60:</strong> Bater 200 assinantes em Guarulhos.</li>
-                        <li class="mb-3"><i class="fa-solid fa-check text-warning me-2"></i> <strong>90:</strong> Escalar para 500 assinantes.</li>
-                    </ul>
-                </div>
-                <div class="col-md-6">
-                    <h4 class="text-warning mb-4">L) Matriz de Riscos</h4>
-                    <div class="custom-card p-3">
-                        <p class="mb-2"><strong>Baixa Adesão:</strong> Mitigação via brindes e prova social.</p>
-                        <p class="mb-0"><strong>Informação Falsa:</strong> Regra de 2 confirmações + Ban automático.</p>
+                    <div class="tab-pane fade" id="content3">
+                        <span class="etapa-badge">ETAPA 3</span>
+                        <h2>Proposta de Valor</h2>
+                        <h3 class="text-warning">"Ganhe mais, rode menos."</h3>
+                        <ul class="mt-3">
+                            <li>Dados de "Pontos Quentes" atualizados a cada 20 min.</li>
+                            <li>Clube de Benefícios (Gasolina, Mecânica, Marmita).</li>
+                            <li>Segurança Comunitária (Alertas de Blitz/Enchentes).</li>
+                        </ul>
                     </div>
+
+                    <div class="tab-pane fade" id="content4">
+                        <span class="etapa-badge">ETAPA 4</span>
+                        <h2>Produto / MVP</h2>
+                        <p>Interface simples: Um mapa de calor de alta precisão.</p>
+                        <div class="highlight-box">
+                            <strong>Core:</strong> Clique longo para reportar + Validação por GPS + Dupla confirmação (evita dados falsos).
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="content5">
+                        <span class="etapa-badge">ETAPA 5</span>
+                        <h2>Modelo de Negócio</h2>
+                        <div class="row mt-4">
+                            <div class="col-6">
+                                <h5>B2C (Assinaturas)</h5>
+                                <p>Semanal: <span class="price-tag">R$ 4,90</span></p>
+                                <p>Mensal: <span class="price-tag">R$ 14,90</span></p>
+                            </div>
+                            <div class="col-6">
+                                <h5>B2B (Parceiros)</h5>
+                                <p>Pins no Mapa: <span class="price-tag">R$ 100/mês</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="content6">
+                        <span class="etapa-badge">ETAPA 6</span>
+                        <h2>Go-To-Market</h2>
+                        <p>Marketing de Guerrilha: Shoppings Maia e Internacional.</p>
+                        <p><strong>Isca:</strong> 7 dias grátis + Distribuição de água e capas de celular para gerar prova social.</p>
+                    </div>
+
+                    <div class="tab-pane fade" id="content7">
+                        <span class="etapa-badge">ETAPA 7</span>
+                        <h2>Operação e Qualidade</h2>
+                        <ul>
+                            <li>Suporte via WhatsApp Business.</li>
+                            <li>Sistema de "Ban" automático após 3 denúncias.</li>
+                            <li>Dados expiram após 20 minutos para manter o mapa "quente".</li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-pane fade" id="content8">
+                        <span class="etapa-badge">ETAPA 8</span>
+                        <h2>Finanças (Unit Economics)</h2>
+                        <p><strong>Investimento:</strong> R$ 5k - R$ 10k (MVP).</p>
+                        <p><strong>CAC Alvo:</strong> R$ 5,00 (Custo por novo pagante).</p>
+                        <p><strong>Faturamento Estimado:</strong> R$ 7.450,00/mês (com 500 usuários).</p>
+                    </div>
+
+                    <div class="tab-pane fade" id="content9">
+                        <span class="etapa-badge">ETAPA 9</span>
+                        <h2>Plano 30/60/90 Dias</h2>
+                        <div class="highlight-box">
+                            <strong>30 DIAS:</strong> Fechar 5 parceiros e lançar Beta em Guarulhos.<br>
+                            <strong>60 DIAS:</strong> Bater 200 assinantes e adesivagem de baús.<br>
+                            <strong>90 DIAS:</strong> Bater 500 assinantes e avaliar expansão para SP.
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="content10">
+                        <span class="etapa-badge">ETAPA 10</span>
+                        <h2>Pitch Final</h2>
+                        <p class="fs-5 italic">"Sou entregador em Guarulhos. Criei o GPS do Motoca para a gente parar de rodar no escuro. É a união da categoria em forma de tecnologia. Custa menos que um cafezinho e se paga na primeira entrega que você não perde. Vamos dominar o trecho?"</p>
+                    </div>
+
                 </div>
             </div>
         </div>
-    </section>
+    </main>
 
     <footer>
-        <div class="container">
-            <p>GPS do Motoca - Plano de Marketing Estratégico &copy; 2026</p>
-            <p class="small">Desenvolvido sob o conceito de Inteligência Coletiva para Guarulhos.</p>
-        </div>
+        <p>GPS do Motoca &copy; 2026 | Guarulhos/SP - Estratégia de Alto Impacto</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
